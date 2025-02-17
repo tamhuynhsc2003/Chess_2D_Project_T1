@@ -25,8 +25,8 @@ public class MovePlate : MonoBehaviour
         if(attack){
             GameObject cp = gameController.GetComponent<GameController>().GetPosition(matrixX, matrixY);
 
-            if(cp.name == "white_king") gameController.GetComponent<GameController>().Winner("black");
-            if(cp.name == "black_king") gameController.GetComponent<GameController>().Winner("white");
+            if(cp.name == "white_king") gameController.GetComponent<GameController>().Winner("Black");
+            if(cp.name == "black_king") gameController.GetComponent<GameController>().Winner("White");
             Destroy(cp);
         }
         gameController.GetComponent<GameController>().SetPositionEmpty(reference.GetComponent<PlayerController>().getXBoard(), 
@@ -41,6 +41,8 @@ public class MovePlate : MonoBehaviour
         gameController.GetComponent<GameController>().NextTurn();
 
         reference.GetComponent<PlayerController>().PoolingMovePlate();
+
+        gameController.GetComponent<GameController>().PlayAudio();
     }
 
     public void SetCoords(int x, int y){
@@ -55,4 +57,5 @@ public class MovePlate : MonoBehaviour
     public GameObject GetReference(){
         return reference;
     }
+
 }

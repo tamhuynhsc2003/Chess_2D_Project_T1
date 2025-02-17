@@ -11,8 +11,11 @@ public class GameController : MonoBehaviour
     private GameObject [] playerBlack = new GameObject[16];
     private GameObject [] playerWhite = new GameObject[16];
 
-    private string currentPlayer ="white";
+    private string currentPlayer ="White";
     private bool gameOver = false;
+
+    public AudioSource audioSource; // Nơi phát âm thanh
+    public AudioClip audioClip;
 
     void Start()
     {
@@ -76,10 +79,10 @@ public class GameController : MonoBehaviour
     }
 
     public void NextTurn(){
-        if(currentPlayer == "white"){
-            currentPlayer = "black";
+        if(currentPlayer == "White"){
+            currentPlayer = "Black";
         }else{
-            currentPlayer = "white";
+            currentPlayer = "White";
         }
     }
 
@@ -98,5 +101,19 @@ public class GameController : MonoBehaviour
         GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().text = playerWinner + " is the Winner";
 
         GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().enabled = true;
+        GameObject.FindGameObjectWithTag("GameOverPanel").GetComponent<Image>().enabled = true;
+    }
+
+    public void PlayAudio()
+    {
+        if (audioSource != null && audioClip != null)
+        {
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource hoặc AudioClip chưa được gán!");
+        }
     }
 }

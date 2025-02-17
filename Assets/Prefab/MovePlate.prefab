@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 636199a7219aa2d46b5bf19e12d28013, type: 3}
   attack: 0
 --- !u!61 &5437662427793337622
 BoxCollider2D:
